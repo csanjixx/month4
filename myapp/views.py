@@ -1,4 +1,3 @@
-# myapp/views.py
 from django.http import HttpResponse
 from datetime import datetime
 
