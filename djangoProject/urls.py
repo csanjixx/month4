@@ -1,9 +1,7 @@
-from django.urls import path
-from myapp.views import hello_view, current_date_view, goodbye_view
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('hello/', hello_view, name='hello'),
-    path('current_date/', current_date_view, name='current_date'),
-    path('goodbye/', goodbye_view, name='goodbye'),
+    path('admin/', admin.site.urls),
+    path('myapp/', include('myapp.urls')),
 ]
-
