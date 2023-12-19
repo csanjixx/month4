@@ -6,4 +6,4 @@ def main_view(request):
 
 def products_view(request):
     products = Product.objects.all()
-    return render(request, 'Product/Product.html', {'Product': products})
+    return render(request, 'products/products.html', {'products': products})
