@@ -1,14 +1,9 @@
-from django.http import HttpResponse
-from datetime import datetime, timezone, timedelta
+from django.shortcuts import render
+from .models import Product
 
-def hello_view(request):
-    return HttpResponse("Hello! It's my project")
+def main_view(request):
+    return render(request, 'layouts/main.html')
 
-def current_date_bishkek(request):
-    current_date_utc = datetime.now(timezone.utc).date()
-    current_date_bishkek = current_date_utc + timedelta(hours=6)
-    formatted_date = current_date_bishkek.strftime("%d-%m-%Y")
-    return HttpResponse(f"Current Date in Bishkek: {formatted_date}")
-
-def goodbye_view(request):
-    return HttpResponse("Goodbye user!")
+def products_view(request):
+    products = Product.objects.all()
+    return render(request, 'products/products.html', {'products': products})
