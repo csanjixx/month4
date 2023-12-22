@@ -1,9 +1,7 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Category
 
-def main_view(request):
-    return render(request, 'layouts/main.html')
-
-def products_view(request):
-    products = Product.objects.all()
-    return render(request, 'products/products.html', {'products': products})
+def categories_view(request):
+    categories = Category.objects.all()
+    context = {'categories': categories}
+    return render(request, 'categories.html', context)

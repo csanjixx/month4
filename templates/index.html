@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% block title %}My Website{% endblock %}</title>
-</head>
-<body>
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Categories</h2>
+<ul>
+    {% for category in categories %}
+        <li>
+            <h3>{{ category.name }}</h3>
+            <ul>
+                {% for product in category.product_set.all %}
+                    <li>{{ product.title }} - {{ product.description }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
