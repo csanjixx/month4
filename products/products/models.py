@@ -15,3 +15,12 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.category.name})"
+
+    class Review(models.Model):
+        product = models.ForeignKey('Product', on_delete=models.CASCADE)
+        user_name = models.CharField(max_length=255)
+        comment = models.TextField()
+        created_at = models.DateTimeField(auto_now_add=True)
+
+        def __str__(self):
+            return f"{self.user_name} - {self.product.name} - {self.created_at}"
