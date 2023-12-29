@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ product.name }}</h2>
+  <p>Category: {{ product.category }}</p>
+  <p>Price: {{ product.price }}</p>
+  <p>Description: {{ product.description }}</p>
+
+  <h3>Reviews</h3>
+  <ul>
+    {% for review in product.reviews.all %}
+      <li>{{ review.author }} says: {{ review.text }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3>Create a Review</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ review_form.as_p }}
+    <button type="submit">Submit Review</button>
+  </form>
+{% endblock %}
